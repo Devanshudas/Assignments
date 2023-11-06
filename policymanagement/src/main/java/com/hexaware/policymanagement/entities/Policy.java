@@ -1,5 +1,7 @@
 package com.hexaware.policymanagement.entities;
 
+import java.util.Objects;
+
 public class Policy 
 {
 	private int policy_id;
@@ -103,6 +105,31 @@ public class Policy
 				+ yearsofpayment + ", amount=" + amount + ", tenure=" + tenure + ", maturity_amount=" + maturity_amount
 				+ ", validity=" + validity + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, company, maturity_amount, policy_description, policy_id, policy_name, policy_type,
+				tenure, validity, yearsofpayment);
+	}
+
+	@Override
+	public boolean equals(Object obj) 
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Policy other = (Policy) obj;
+		return amount == other.amount && Objects.equals(company, other.company)
+				&& Double.doubleToLongBits(maturity_amount) == Double.doubleToLongBits(other.maturity_amount)
+				&& Objects.equals(policy_description, other.policy_description) && policy_id == other.policy_id
+				&& Objects.equals(policy_name, other.policy_name) && Objects.equals(policy_type, other.policy_type)
+				&& tenure == other.tenure && validity == other.validity && yearsofpayment == other.yearsofpayment;
+	}
+	
+	
 	
 
 }

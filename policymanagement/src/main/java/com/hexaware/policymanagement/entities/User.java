@@ -1,6 +1,7 @@
 package com.hexaware.policymanagement.entities;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class User 
 {
@@ -120,6 +121,30 @@ public class User
 					+ mob_no + ", user_type=" + user_type + ", user_category=" + user_category + ", address="
 					+ address + "]";
 		}
+
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(address, dob, fname, lname, mob_no, pwd, user_category, user_id, user_type);
+		}
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			User other = (User) obj;
+			return Objects.equals(address, other.address) && Objects.equals(dob, other.dob)
+					&& Objects.equals(fname, other.fname) && Objects.equals(lname, other.lname)
+					&& mob_no == other.mob_no && Objects.equals(pwd, other.pwd)
+					&& Objects.equals(user_category, other.user_category) && user_id == other.user_id
+					&& Objects.equals(user_type, other.user_type);
+		}
+		
 		
 		
 		

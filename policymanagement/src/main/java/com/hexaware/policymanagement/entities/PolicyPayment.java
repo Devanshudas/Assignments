@@ -1,5 +1,7 @@
 package com.hexaware.policymanagement.entities;
 
+import java.util.Objects;
+
 public class PolicyPayment {
 	private int txn_id;
 	private int user_id;
@@ -73,5 +75,25 @@ public class PolicyPayment {
 	public void setFine(double fine) {
 		this.fine = fine;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, bank, dateofpaymentdate, fine, payment_status, policy_num, txn_id, user_id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PolicyPayment other = (PolicyPayment) obj;
+		return amount == other.amount && Objects.equals(bank, other.bank)
+				&& dateofpaymentdate == other.dateofpaymentdate
+				&& Double.doubleToLongBits(fine) == Double.doubleToLongBits(other.fine)
+				&& Objects.equals(payment_status, other.payment_status) && policy_num == other.policy_num
+				&& txn_id == other.txn_id && user_id == other.user_id;
+	}
+	
 	
 }

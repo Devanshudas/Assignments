@@ -1,6 +1,7 @@
 package com.hexaware.policymanagement.entities;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class UserPolicy 
 {
@@ -236,6 +237,34 @@ public class UserPolicy
 				+ ", amount=" + amount + ", tenure=" + tenure + ", maturityamount=" + maturityamount + ", validity="
 				+ validity + ", user=" + user + ", policy=" + policy + "]";
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, company, end_date, maturityamount, payment_interval, policy, policy_id, policy_name,
+				policy_num, policy_type, start_date, tenure, user, user_id, validity);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserPolicy other = (UserPolicy) obj;
+		return amount == other.amount && Objects.equals(company, other.company)
+				&& Objects.equals(end_date, other.end_date)
+				&& Double.doubleToLongBits(maturityamount) == Double.doubleToLongBits(other.maturityamount)
+				&& Objects.equals(payment_interval, other.payment_interval) && Objects.equals(policy, other.policy)
+				&& policy_id == other.policy_id && Objects.equals(policy_name, other.policy_name)
+				&& policy_num == other.policy_num && Objects.equals(policy_type, other.policy_type)
+				&& Objects.equals(start_date, other.start_date) && tenure == other.tenure
+				&& Objects.equals(user, other.user) && user_id == other.user_id && validity == other.validity;
+	}
+	
 
 
 

@@ -1,5 +1,7 @@
 package com.hexaware.policymanagement.entities;
 
+import java.util.Objects;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -88,6 +90,29 @@ public class Address
 				+ state + ", pincode=" + pincode + "]";
 	}
 
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(address_id, address_line, city, pincode, state);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		return address_id == other.address_id && Objects.equals(address_line, other.address_line)
+				&& Objects.equals(city, other.city) && pincode == other.pincode && Objects.equals(state, other.state);
+	}
+
+	
 
 
 
